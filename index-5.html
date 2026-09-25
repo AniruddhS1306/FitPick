@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FitPick — Try. Compare. Pick Your Protein.</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#070908;color:#f7f8f5;font-family:Arial,Helvetica,sans-serif}
+a{text-decoration:none;color:inherit}.nav{position:sticky;top:0;z-index:20;background:#090b09ee;border-bottom:1px solid #242824;backdrop-filter:blur(10px)}
+.navin{max-width:1180px;margin:auto;height:70px;padding:0 20px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:30px;font-weight:900;font-style:italic;letter-spacing:-2px}.g{color:#a8ff00}
+.links{display:flex;gap:26px;font-size:14px;color:#ddd}.links a:hover{color:#a8ff00}.sign{border:1px solid #a8ff00;color:#a8ff00;border-radius:22px;padding:8px 17px}
+.hero{min-height:610px;background:radial-gradient(circle at 75% 50%,#27351b,transparent 38%),linear-gradient(110deg,#070807 45%,#11150f)}
+.wrap{max-width:1180px;margin:auto;padding:0 20px}.hero .wrap{min-height:610px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px}.eyebrow{font-size:12px;letter-spacing:2px;color:#cfd4cc}.hero h1{font-size:clamp(45px,6vw,76px);line-height:.98;letter-spacing:-4px;margin:14px 0}.hero p{font-size:18px;line-height:1.6;color:#c6cbc4;max-width:590px}.buttons{display:flex;gap:12px;margin-top:25px}.btn{border:1px solid #5d635c;padding:13px 22px;border-radius:28px;color:#fff;display:inline-block}.primary{background:#a8ff00;color:#071000;border-color:#a8ff00;font-weight:800}
+.visual{height:440px;border:1px solid #30362e;border-radius:28px;background:linear-gradient(145deg,#20271d,#080908);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}.visual img{position:absolute;object-fit:contain;filter:drop-shadow(0 18px 22px #000);border-radius:10px}.hero-on{width:170px;left:8%;bottom:8%;transform:rotate(-8deg)}.hero-mp{width:160px;right:5%;top:11%;transform:rotate(8deg)}.hero-mt{width:155px;right:1%;bottom:4%;transform:rotate(-4deg)}.shaker{height:250px;width:125px;border-radius:25px 25px 38px 38px;background:linear-gradient(90deg,#0c0d0c,#353a35,#0c0d0c);border:2px solid #555;display:flex;align-items:center;justify-content:center;transform:rotate(5deg);box-shadow:0 25px 60px #000;z-index:2}.shaker b{writing-mode:vertical-rl;color:#a8ff00;font-size:28px}.note{position:absolute;right:8%;top:5%;font-style:italic;font-size:20px;z-index:3}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:-28px;position:relative}.trust div,.card,.feature,.quote{background:#121513;border:1px solid #292e2a;border-radius:14px;padding:20px}.trust b{display:block;color:#a8ff00;margin-bottom:5px}.muted{color:#9da39b}
+.section{padding:80px 0}.center{text-align:center}.title{font-size:40px;margin:0 0 8px}.steps,.products,.features{display:grid;gap:16px;margin-top:34px}.steps{grid-template-columns:repeat(3,1fr)}.stepnum{display:inline-flex;background:#a8ff00;color:#071000;width:34px;height:34px;border-radius:50%;align-items:center;justify-content:center;font-weight:900}.step h3{margin-bottom:7px}.step p,.feature p{color:#9da39b;font-size:14px;line-height:1.55}
+.products{grid-template-columns:repeat(3,1fr)}.prodimg{height:225px;background:linear-gradient(145deg,#252a25,#0d0f0d);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:15px;overflow:hidden}.prodimg img{width:92%;height:92%;object-fit:contain;filter:drop-shadow(0 12px 16px #000)}.stars{color:#ffd52e;margin:6px 0}.price{font-size:20px;font-weight:900;margin:9px 0}.add{width:100%;padding:10px;border:0;border-radius:8px;background:#a8ff00;font-weight:800;cursor:pointer}
+.tablebox{overflow:auto;border:1px solid #292e2a;border-radius:14px;margin-top:32px}.tablebox table{border-collapse:collapse;width:100%;min-width:720px}.tablebox th,.tablebox td{padding:13px;border-bottom:1px solid #292e2a;text-align:center}.tablebox th{background:#1b2118;color:#a8ff00}
+.features{grid-template-columns:repeat(4,1fr)}.feature{text-align:center}.feature .ico{font-size:28px;color:#a8ff00}.why{display:grid;grid-template-columns:1fr 1fr;gap:30px;background:linear-gradient(110deg,#131812,#0b0d0b);border:1px solid #2a3028;border-radius:20px;padding:42px}.why p{color:#aab0a8;line-height:1.7}.quote{display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1.6}
+footer{border-top:1px solid #252925;padding:40px 0;color:#999}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.modal{display:none;position:fixed;inset:0;background:#000b;z-index:30;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modalbox{background:#151816;border:1px solid #343a34;border-radius:18px;padding:28px;max-width:420px;width:100%}.modalbox input{width:100%;padding:13px;background:#0b0d0b;border:1px solid #444;color:white;border-radius:8px;margin:15px 0}
+@media(max-width:850px){.links{display:none}.hero .wrap{grid-template-columns:1fr;padding-top:55px;padding-bottom:55px}.visual{height:350px}.products{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}.why{grid-template-columns:1fr}.steps,.trust{grid-template-columns:1fr}}
+@media(max-width:520px){.products{grid-template-columns:1fr}.features{grid-template-columns:1fr 1fr}.hero h1{letter-spacing:-2px}.trust{margin-top:0}.section{padding:60px 0}.hero-on{width:125px}.hero-mp{width:115px}.hero-mt{width:110px}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="navin"><a class="logo" href="#">Fit<span>Pick</span></a><div class="links"><a href="#home">Home</a><a href="#explore">Explore</a><a href="#how">How It Works</a><a href="#about">About</a><a href="#contact">Contact</a></div><a class="sign" href="#" onclick="login();return false">Sign In</a></div></nav>
+
+<section class="hero" id="home"><div class="wrap">
+<div><div class="eyebrow">PROTEIN DISCOVERY PLATFORM</div><h1>Try. Compare.<br><span class="g">Pick</span> Your Protein.</h1><p>Stop guessing. Try sample packs, compare taste and nutrition, and discover what works for you before buying a full-size pack.</p><div class="buttons"><a class="btn primary" href="#explore">Explore Proteins →</a><a class="btn" href="#how">How It Works</a></div></div>
+<div class="visual"><div class="note">Small packs<br>Big decisions</div>
+<img class="hero-on" src="https://cdn11.bigcommerce.com/s-ilgxsy4t82/images/stencil/1280x1280/products/287804/891575/81UuxiPD3rL__99834.1719831475.jpg?c=1&imbypass=on" alt="Optimum Nutrition Gold Standard Whey">
+<img class="hero-mp" src="https://i.ebayimg.com/00/s/MTIxOFgxMDE1/z/MewAAOSwPuZl8iLV/%24_57.JPG?set_id=8800005007" alt="MyProtein Impact Whey">
+<img class="hero-mt" src="https://m.media-amazon.com/images/I/71OL79gRjDL.jpg" alt="MuscleTech Nitro Tech">
+<div class="shaker"><b>FitPick</b></div></div>
+</div></section>
+
+<main class="wrap">
+<div class="trust"><div><b>✓ Trusted Brands</b><span class="muted">Real product visuals</span></div><div><b>✓ Easy Comparison</b><span class="muted">Taste, nutrition & mixability</span></div><div><b>✓ Try Before You Buy</b><span class="muted">A smarter buying decision</span></div></div>
+
+<section class="section" id="how"><div class="center"><h2 class="title">How <span class="g">FitPick</span> Works?</h2><p class="muted">Three simple steps to find your protein.</p></div><div class="steps">
+<div class="card"><span class="stepnum">1</span><h3>Choose</h3><p>Select sample packs from different protein brands.</p></div>
+<div class="card"><span class="stepnum">2</span><h3>Try & Compare</h3><p>Experience taste, texture, mixability and your overall preference.</p></div>
+<div class="card"><span class="stepnum">3</span><h3>Pick Your Protein</h3><p>Choose the full-size product you actually prefer.</p></div></div></section>
+
+<section class="section" id="explore"><h2 class="title">Explore Protein <span class="g">Samples</span></h2><p class="muted">9 protein brands · Real product visuals for the FitPick college prototype.</p><div class="products">
+<div class="card"><div class="prodimg"><img src="https://cdn11.bigcommerce.com/s-ilgxsy4t82/images/stencil/1280x1280/products/287804/891575/81UuxiPD3rL__99834.1719831475.jpg?c=1&imbypass=on" alt="Optimum Nutrition Gold Standard Whey"></div><b>Optimum Nutrition</b><div class="muted">Gold Standard Whey · Chocolate</div><div class="stars">★★★★★</div><div class="price">Sample</div><button class="add" onclick="sample('Optimum Nutrition')">Add Sample</button></div>
+<div class="card"><div class="prodimg"><img src="https://i.ebayimg.com/00/s/MTIxOFgxMDE1/z/MewAAOSwPuZl8iLV/%24_57.JPG?set_id=8800005007" alt="MyProtein Impact Whey"></div><b>MyProtein</b><div class="muted">Impact Whey · Chocolate</div><div class="stars">★★★★☆</div><div class="price">Sample</div><button class="add" onclick="sample('MyProtein')">Add Sample</button></div>
+<div class="card"><div class="prodimg"><img src="https://m.media-amazon.com/images/I/71OL79gRjDL.jpg" alt="MuscleTech Nitro Tech"></div><b>MuscleTech</b><div class="muted">Nitro Tech · Milk Chocolate</div><div class="stars">★★★★☆</div><div class="price">Sample</div><button class="add" onclick="sample('MuscleTech')">Add Sample</button></div>
+<div class="card"><div class="prodimg"><img src="https://i5.walmartimages.com/seo/Dymatize-ISO100-Hydrolyzed-Whey-Isolate-Protein-Powder-Gourmet-Chocolate-5-lb_59f5de7a-f424-4c77-a77a-0938f73a0dd8.9c9e7bcf69b78485f40e958a2284992d.jpeg" alt="Dymatize ISO100"></div><b>Dymatize</b><div class="muted">ISO100 · Gourmet Chocolate</div><div class="stars">★★★★★</div><div class="price">Sample</div><button class="add" onclick="sample('Dymatize')">Add Sample</button></div>
+<div class="card"><div class="prodimg"><img src="https://thefitfuelnutrition.com/cdn/shop/files/Avvatar_Whey_Protein3.png?v=1763027687" alt="Avvatar Whey Protein"></div><b>Avvatar</b><div class="muted">Whey Protein · Chocolate</div><div class="stars">★★★★★</div><div class="price">Sample</div><button class="add" onclick="sample('Avvatar')">Add Sample</button></div>
+<div class="card"><div class="prodimg"><img src="https://cdn.grofers.com/da/cms-assets/cms/product/rc-upload-1775718265448-510.jpg" alt="The Whole Truth Protein"></div><b>The Whole Truth</b><div class="muted">Cleanest Protein · Light Cocoa</div><div class="stars">★★★★☆</div><div class="price">Sample</div><button class="add" onclick="sample('The Whole Truth')">Add Sample</button></div>
+<div class="card"><div class="prodimg"><img src="https://img6.hkrtcdn.com/41350/prd_4134915-TrueBasics-Clean-Whey-Protein-Isolate-Concentrate-2.2-lb-Chocolate_o.jpg" alt="TrueBasics Clean Whey"></div><b>TrueBasics</b><div class="muted">Clean Whey · Chocolate</div><div class="stars">★★★★☆</div><div class="price">Sample</div><button class="add" onclick="sample('TrueBasics')">Add Sample</button></div>
+<div class="card"><div class="prodimg"><img src="https://cdn2.nutrabay.com/uploads/variant/images/featured_image-NB-MIL-1000-03-1776189021-1500x1500.webp" alt="Mille Protein"></div><b>Mille</b><div class="muted">Protein · Dark Chocolate</div><div class="stars">★★★★☆</div><div class="price">Sample</div><button class="add" onclick="sample('Mille')">Add Sample</button></div>
+<div class="card"><div class="prodimg"><img src="https://m.media-amazon.com/images/I/71kQ0f7cW8L.jpg" alt="MuscleBlaze Biozyme Whey"></div><b>MuscleBlaze</b><div class="muted">Biozyme Performance Whey</div><div class="stars">★★★★★</div><div class="price">Sample</div><button class="add" onclick="sample('MuscleBlaze')">Add Sample</button></div>
+
+</div></section>
+
+<section class="section"><div class="center"><h2 class="title">Compare <span class="g">Proteins</span></h2><p class="muted">Use the real product pages for verified specifications before publishing.</p></div><div class="tablebox"><table><tr><th>Brand</th><th>Product</th><th>Protein shown</th><th>Flavour</th></tr>
+<tr><td>Optimum Nutrition</td><td>Gold Standard Whey</td><td>24g/serving*</td><td>Double Rich Chocolate</td></tr>
+<tr><td>MyProtein</td><td>Impact Whey</td><td>See current pack*</td><td>Chocolate</td></tr>
+<tr><td>MuscleTech</td><td>Nitro Tech</td><td>30g/serving*</td><td>Milk Chocolate</td></tr>
+<tr><td>Dymatize</td><td>ISO100</td><td>25g/serving*</td><td>Gourmet Chocolate</td></tr>
+<tr><td>MuscleBlaze</td><td>Biozyme Performance Whey</td><td>See current pack*</td><td>Chocolate</td></tr>
+<tr><td>Avvatar</td><td>Whey Protein</td><td>See current pack*</td><td>Chocolate</td></tr>
+<tr><td>The Whole Truth</td><td>Cleanest Protein</td><td>See current pack*</td><td>Light Cocoa</td></tr>
+<tr><td>TrueBasics</td><td>Clean Whey</td><td>See current pack*</td><td>Chocolate</td></tr>
+<tr><td>Mille</td><td>Protein</td><td>See current pack*</td><td>Dark Chocolate</td></tr></table></div>
+<p class="muted" style="font-size:12px;margin-top:10px">*Packaging and formulations can vary by region/variant. Verify current Indian product information before using these figures commercially.</p></section>
+
+<section class="section"><div class="features"><div class="feature"><div class="ico">💪</div><h3>Try Before You Buy</h3><p>Try before committing to a full-size pack.</p></div><div class="feature"><div class="ico">▥</div><h3>Compare Easily</h3><p>Compare taste, nutrition and mixability.</p></div><div class="feature"><div class="ico">✓</div><h3>Authentic Samples</h3><p>Use officially packed samples from authorized sources.</p></div><div class="feature"><div class="ico">→</div><h3>Simple Choice</h3><p>Discover what fits your preference.</p></div></div></section>
+
+<section class="section" id="about"><div class="why"><div><h2 class="title">Why <span class="g">FitPick?</span></h2><p>Buying a large protein pack without knowing whether you will enjoy it can be frustrating. FitPick turns that decision into a simple try, compare and pick journey.</p><a class="btn primary" href="#explore">Start Exploring →</a></div><div class="quote">“Try a few options, compare your experience, then decide what you prefer.”</div></div></section>
+</main>
+
+<footer id="contact"><div class="wrap foot"><div><div class="logo">Fit<span>Pick</span></div><small>Try. Compare. Pick Your Protein.</small></div><div>Home · Explore · How It Works · About · Contact</div><div>© 2026 FitPick · College Prototype</div></div></footer>
+
+<div class="modal" id="modal"><div class="modalbox"><button onclick="closeLogin()" style="float:right;background:none;border:0;color:#aaa;font-size:24px">×</button><h2>Welcome to <span class="g">FitPick</span></h2><p class="muted">Prototype sign-in</p><input placeholder="Email address"><button class="add" onclick="alert('Prototype sign-in — backend not connected yet.');closeLogin()">Continue</button></div></div>
+<script>
+function sample(n){alert(n+" sample added to your FitPick box!")}
+function login(){document.getElementById("modal").classList.add("show")}
+function closeLogin(){document.getElementById("modal").classList.remove("show")}
+</script>
+</body></html>
